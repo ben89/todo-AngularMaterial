@@ -13,8 +13,12 @@
     width: 100%;
 }
 
-tr.mat-row :hover {
-    background: aliceblue;
+tr:hover td  {
+    background-color:aliceblue;
+}
+
+tr {
+    cursor: pointer;
 }
 
 .done {
@@ -22,5 +26,5 @@ tr.mat-row :hover {
 }
 
 .selected {
-    font-weight: bold;
+    background-color: aliceblue;
 }

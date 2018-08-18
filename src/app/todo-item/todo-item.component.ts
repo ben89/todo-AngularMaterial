@@ -18,6 +18,7 @@ export class TodoItemComponent implements OnInit {
 
   onClickSave() {
     this.todoService.update(this.currentItem);
+    this.bottomSheetRef.dismiss();
   }
 
   currentItem: TodoItem;
@@ -29,6 +30,11 @@ export class TodoItemComponent implements OnInit {
         this.currentItem = Object.assign({}, this.todoService.selectedItem); 
       }
     );
+    this.bottomSheetRef.afterDismissed().subscribe(
+      () => {
+        this.todoService.selectedItem = null;
+      }
+    )
   }
 
 }
