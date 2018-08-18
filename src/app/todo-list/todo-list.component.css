@@ -13,6 +13,10 @@
     width: 100%;
 }
 
+tr.mat-row :hover {
+    background: aliceblue;
+}
+
 .done {
     text-decoration: line-through;
 }

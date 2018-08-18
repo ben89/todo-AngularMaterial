@@ -16,6 +16,8 @@ export class TodoListComponent implements OnInit {
 
   constructor(private todoService: TodoService, private bottomSheet: MatBottomSheet) {}
 
+  displayedColumns: string[] = ['done', 'title', 'delete'];
+
   // event-handlers START
 
   onItemClick = (clickedTodo: TodoItem) => {

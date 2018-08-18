@@ -11,24 +11,37 @@
     </mat-form-field> 
   </form>
 
-  <!-- list of items -->
-  <mat-list>
-    <mat-list-item  
-      *ngFor="let todo of todoService.todos"
+  <!-- show todolist -->
+  <table mat-table [dataSource]="todoService.todos" class="mat-elevation-z8 todo-width" >
+    <ng-container matColumnDef="done">
+      <th mat-header-cell *matHeaderCellDef> Status </th>
+      <td mat-cell *matCellDef="let todo">
+        <mat-checkbox 
+          color="primary"
+          (change)="onItemCheck(todo)"
+          [(ngModel)]="todo.done">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef> Todo </th>
+      <td mat-cell *matCellDef="let todo"> {{todo.title}} </td>
+    </ng-container>
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef> </th>
+      <td mat-cell *matCellDef="let todo">
+        <button (click)="onClickDelete(todo)" mat-icon-button>
+          <mat-icon>delete_forever</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row 
+      *matRowDef="let todo; columns: displayedColumns;" 
+      (click)="onItemClick(todo)"
       [class.done]="todo.done"
       [class.selected]="todo == todoService.selectedItem">
-      <mat-checkbox 
-        color="primary"
-        (change)="onItemCheck(todo)"
-        [(ngModel)]="todo.done"
-        mat-list-icon>
-      </mat-checkbox>
-      <p (click)="onItemClick(todo)" mat-line>{{todo.title}}</p>
-      <mat-divider></mat-divider>
-      <button (click)="onClickDelete(todo)" mat-icon-button>
-        <mat-icon>delete_forever</mat-icon>
-      </button>
-    </mat-list-item>
-  </mat-list>
+    </tr>
+  </table>
 
 </div>
