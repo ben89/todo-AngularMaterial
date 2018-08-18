@@ -1,27 +1,34 @@
-<!-- input form -->
-<mat-form-field>
-  <input matInput
-    type="text" 
-    placeholder="new todo" 
-    [(ngModel)]="todoService.newTodoText" 
-    (keydown)="onKeyDown($event)">
-</mat-form-field>
+<div class="toDoWrapper">
 
-<!-- showing list of items -->
-<mat-list>
-  <mat-list-item  
-    *ngFor="let todo of todoService.todos"
-    [class.done]="todo.done"
-    [class.selected]="todo == todoService.selectedItem">
-    <mat-checkbox 
-      (change)="onItemCheck(todo)"
-      [(ngModel)]="todo.done"
-      mat-list-icon>
-    </mat-checkbox>
-    <p (click)="onItemClick(todo)" mat-line>{{todo.title}}</p>
-    <mat-divider></mat-divider>
-    <button (click)="onClickDelete(todo)" mat-icon-button>
-      <mat-icon>delete_forever</mat-icon>
-    </button>
-  </mat-list-item>
- </mat-list>
+  <!-- input form -->
+  <form class="todo-form" (submit)="addItem()">
+    <mat-form-field class="todo-width">
+      <input matInput 
+        type="text" 
+        placeholder="new todo"
+        name = "title" 
+        [(ngModel)]="todoService.newTodoText">
+    </mat-form-field> 
+  </form>
+
+  <!-- list of items -->
+  <mat-list>
+    <mat-list-item  
+      *ngFor="let todo of todoService.todos"
+      [class.done]="todo.done"
+      [class.selected]="todo == todoService.selectedItem">
+      <mat-checkbox 
+        color="primary"
+        (change)="onItemCheck(todo)"
+        [(ngModel)]="todo.done"
+        mat-list-icon>
+      </mat-checkbox>
+      <p (click)="onItemClick(todo)" mat-line>{{todo.title}}</p>
+      <mat-divider></mat-divider>
+      <button (click)="onClickDelete(todo)" mat-icon-button>
+        <mat-icon>delete_forever</mat-icon>
+      </button>
+    </mat-list-item>
+  </mat-list>
+
+</div>

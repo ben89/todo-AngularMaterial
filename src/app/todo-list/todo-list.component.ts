@@ -30,13 +30,6 @@ export class TodoListComponent implements OnInit {
     this.todoService.update(checkedTodo);
   }
 
-  onKeyDown = (event: KeyboardEvent) => {
-    if (event.key == "Enter") {
-      console.log("enter pressed");
-      this.addItem();
-    }
-  }
-
   onClickDelete = (clickedTodo: TodoItem) => {
     console.log("item clicked for deletion: " + clickedTodo.title);
     this.todoService.remove(clickedTodo);
