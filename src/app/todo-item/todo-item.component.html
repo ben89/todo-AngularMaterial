@@ -1,0 +1,22 @@
+<div *ngIf="currentItem">
+  <p>id: {{currentItem.id}}</p>
+  <p>
+    <mat-form-field>
+      <input 
+        matInput 
+        [(ngModel)]="currentItem.title"
+        placeholder="title">
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-checkbox [(ngModel)]="currentItem.done">
+      erledigt
+    </mat-checkbox>
+  </p>
+  <p>
+    <button (click)="onClickSave()" mat-icon-button>
+      <mat-icon>send</mat-icon>
+    </button>
+  </p>
+</div>
+
