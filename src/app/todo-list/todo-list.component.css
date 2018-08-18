@@ -17,6 +17,14 @@ tr:hover td  {
     background-color:aliceblue;
 }
 
+.cdk-column-done {
+    width: 0px !important;
+}
+
+.cdk-column-delete {
+    text-align: right;
+}
+
 tr {
     cursor: pointer;
 }
